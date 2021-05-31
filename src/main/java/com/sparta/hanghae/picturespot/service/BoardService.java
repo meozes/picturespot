@@ -101,6 +101,47 @@ public class BoardService {
         return boardGetResponseDtoList;
     }
 
+
+    //커뮤니티 게시글 조회 + db
+//    public List<BoardsGetResponseDto> getBoardsDb(UserPrincipal loginUser) {
+//        List<BoardsGetResponseDto> boardGetResponseDtoList = new ArrayList<>();
+//        List<Board> boardAll = boardRepository.findAllByOrderByModifiedDesc();
+//        boolean likeCheck = true;
+//        for (int i=0; i<boardAll.size(); i++) {
+////            Set<BoardImgUrls> allBoardImgUrls = boardAll.get(i).getBoardImgUrls();
+//            Set<BoardImgUrls> allBoardImgUrls = boardImgUrlsRepository.findAllByBoardId(boardAll.get(i).getId());
+////            Set<Comment> allComments = boardAll.get(i).getComments();
+//            Set<Comment> allComments = commentRepository.findAllByBoardIdOrderByModifiedDesc(boardAll.get(i).getId());
+//
+//
+//            List<BoardImgCommonRequestDto> boardImgCommonRequestDtos = new ArrayList<>();
+//            List<BoardDetailCommentsDto> boardDetailCommentsDtos = new ArrayList<>();
+//
+//
+//            for (int j=0; j<allBoardImgUrls.size(); j++) {
+//                boardImgCommonRequestDtos.add(new BoardImgCommonRequestDto(allBoardImgUrls.iterator().next()));
+//            }
+//            for (int k=0; k<allComments.size(); k++) {
+//                boardDetailCommentsDtos.add(new BoardDetailCommentsDto(allComments.iterator().next()));
+//            }
+//            //로그인 사용자가 게시물을 좋아요 했는지 안했는지 체크!
+//            if (loginUser == null) {//로그인이 되어있지 않은 사용자일 때
+//                likeCheck = false;
+//            } else //로그인이 되어있는 사용자 일 때
+//                likeCheck = heartRepository.existsByBoardIdAndUserId(boardAll.get(i).getId(), loginUser.getId());
+//            //게시물에 대한 좋아요 개수
+////            List<Heart> allByBoardIdHearts = boardAll.get(i).getHearts();
+//            List<Heart> allByBoardIdHearts = heartRepository.findAllByBoardId(boardAll.get(i).getId());
+//
+//
+//            BoardsGetResponseDto brdto = new BoardsGetResponseDto(boardAll.get(i).getUser(), boardAll.get(i), likeCheck, allByBoardIdHearts.size(), boardDetailCommentsDtos,boardImgCommonRequestDtos);
+//
+//            boardGetResponseDtoList.add(brdto);
+//        }
+//
+//        return boardGetResponseDtoList;
+//    }
+
     //검색 게시물 조회
     public List<BoardGetSearchResponseDto> search(String searchText, User loginUser) {
         List<BoardGetSearchResponseDto> searchResponseDtos = new ArrayList<>();

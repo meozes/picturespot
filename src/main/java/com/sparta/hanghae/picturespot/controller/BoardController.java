@@ -36,6 +36,15 @@ public class BoardController {
         return customExceptionController.ok("게시글 정보 입니다아!!!.", boards);
     }
 
+
+//    //게시글(커뮤니티)페이지입니다. DB접속
+//    @GetMapping("/board/db")
+//    public ResponseEntity getBoardsDb(@AuthenticationPrincipal UserPrincipal user) {
+//        List<BoardsGetResponseDto> boards = boardService.getBoardsDb(user);
+//        return customExceptionController.ok("게시글 정보 입니다아!!!.", boards);
+//    }
+
+
     //게시물 작성
     @PostMapping("/board")
     public ResponseEntity save(@RequestParam(value = "file", required = false) List<MultipartFile> files, @RequestParam("title") String title,
