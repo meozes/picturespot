@@ -4,6 +4,9 @@ import com.sparta.hanghae.picturespot.dto.request.board.BoardUpdateRequestDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
@@ -39,15 +42,21 @@ public class Board extends Timestamped{
     @JoinColumn(name = "USER_ID")
     private User user;
 
-//    @BatchSize(size = 900)
+
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @Fetch(FetchMode.SELECT)
+    @BatchSize(size=100)
     private Set<BoardImgUrls> boardImgUrls = new HashSet<>();
 
-//    @BatchSize(size = 900)
+
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Comment> comments = new HashSet<>();
 
+
+
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.SELECT)
+    @BatchSize(size=100)
     private List<Heart> hearts = new ArrayList<>();
 
     @Builder

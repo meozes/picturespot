@@ -1,5 +1,6 @@
 package com.sparta.hanghae.picturespot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sparta.hanghae.picturespot.dto.request.comment.CommentUpdateRequestDto;
 import com.sparta.hanghae.picturespot.dto.response.board.BoardDetailCommentsDto;
 import lombok.Builder;
@@ -22,10 +23,12 @@ public class Comment extends Timestamped{
     @Column(nullable = false)
     private String content;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "BOARD_ID")
     private Board board;

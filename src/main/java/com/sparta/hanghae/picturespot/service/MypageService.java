@@ -15,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -37,6 +38,9 @@ public class MypageService {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final S3Service s3Service;
     private final UserService userService;
+    private final BoardImgUrlsRepository boardImgUrlsRepository;
+    private final CommentRepository commentRepository;
+
 
 
     //user정보(이름, 프로필사진, intro메시지)
@@ -54,8 +58,8 @@ public class MypageService {
                 ()->new IllegalArgumentException("해당 사용자가 없습니다.")); //findUser : 그 사람의 페이지, user : 현재 로그인한 사용자
 
         Pageable pageable = PageRequest.of(0, size);
-        Page<Board> boardList = boardRepository.findByIdLessThanAndUserIdOrderByModifiedDesc(lastId, findUser.getId(), pageable);
-        //List<Board> boardList = boardRepository.findAllByUserIdOrderByModifiedDesc(findUser.getId()); //user로 게시물 찾는다
+        Slice<Board> boardList = boardRepository.findByIdLessThanAndUserIdOrderByModifiedDesc(lastId, findUser.getId(), pageable);
+        //Page<Board> boardList = boardRepository.findByIdLessThanAndUserIdOrderByModifiedDesc(lastId, findUser.getId(), pageable);
         List<MypageResponseDto> mypageDtoList = new ArrayList<>();
 
         for (Board board : boardList) { //게시글

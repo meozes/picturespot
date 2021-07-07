@@ -5,6 +5,8 @@ import com.sparta.hanghae.picturespot.dto.request.mypage.PasswordRequestDto;
 import com.sparta.hanghae.picturespot.dto.response.mypage.MypageResponseDto;
 import com.sparta.hanghae.picturespot.dto.response.mypage.NicknameResponseDto;
 import com.sparta.hanghae.picturespot.dto.response.mypage.ProfileResponseDto;
+import com.sparta.hanghae.picturespot.model.Board;
+import com.sparta.hanghae.picturespot.model.BoardImgUrls;
 import com.sparta.hanghae.picturespot.model.UserPrincipal;
 import com.sparta.hanghae.picturespot.responseentity.CustomExceptionController;
 import com.sparta.hanghae.picturespot.service.MypageService;

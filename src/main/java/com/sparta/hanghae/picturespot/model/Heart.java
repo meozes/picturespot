@@ -1,5 +1,6 @@
 package com.sparta.hanghae.picturespot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,10 +17,12 @@ public class Heart {
     private Long id;
 
     //@ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "USER_ID")
     private User user;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "BOARD_ID")
     private Board board;

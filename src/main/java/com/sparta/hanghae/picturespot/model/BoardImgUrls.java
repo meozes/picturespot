@@ -1,5 +1,6 @@
 package com.sparta.hanghae.picturespot.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sparta.hanghae.picturespot.dto.request.board.BoardUpdateRequestDto;
 import com.sparta.hanghae.picturespot.dto.request.img.BoardImgCommonRequestDto;
 import com.sparta.hanghae.picturespot.dto.response.board.BoardDetailCommentsDto;
@@ -22,6 +23,7 @@ public class BoardImgUrls {
     @Column(name = "BOARDIMGURLS_ID")
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "BOARD_ID")
     private Board board;
